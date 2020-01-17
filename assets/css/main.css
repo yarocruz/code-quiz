@@ -1,7 +1,8 @@
 body {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-size: 18px;
-	background-color: #ebb135;
+	background-color: #ffda62;
+	color: #1d355c;
 }
 
 h1,
@@ -23,10 +24,11 @@ li {
 
 h1 {
 	font-size: 1.4em;
+	text-transform: uppercase;
 }
 
 .quiz-container {
-	max-width: 500px;
+	max-width: 600px;
 	padding: 40px;
 	margin: 10% auto;
 	background-color: #fcfcfd;
@@ -42,8 +44,9 @@ h1 {
 	padding-left: 15px;
 }
 
-.selected {
-	background-color: #e2e2e2;
+.selected,
+li:hover {
+	background-color: #f4f5f7;
 	border-radius: 30px;
 }
 
@@ -54,7 +57,7 @@ input {
 	-moz-appearance: none;
 	-o-appearance: none;
 	appearance: none;
-	border: 1px solid #34495e;
+	border: 1px solid #9fa1a5;
 	border-radius: 100px;
 	outline: none;
 	transition-duration: 0.3s;
@@ -62,7 +65,7 @@ input {
 }
 
 input:checked {
-	background-color: #e01e1e;
+	background-color: #ff5161;
 	border: none;
 }
 
@@ -75,4 +78,18 @@ input:checked::before {
 	left: 1rem;
 	top: 0.5rem;
 	cursor: pointer;
+}
+
+.btn {
+	color: #c0c6d1;
+	outline: none;
+	border: none;
+	font-size: .89em;
+	padding: 10px 15px;
+	border-radius: 3px;
+	background-color: #1d355c;
+}
+
+.btn:hover {
+	color: #fcfcfd;
 }
