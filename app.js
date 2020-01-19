@@ -1,5 +1,8 @@
 let questionHeading = document.querySelector('.quiz-question');
-let nextBtn = document.querySelector('button');
+let nextBtn = document.querySelector('.next-question');
+let quizStartBtn = document.querySelector('.quiz-start-btn');
+let quizStartContainer = document.querySelector('.quiz-start');
+let quiztContainer = document.querySelector('.quiz-container');
 
 // Answer choices Elements
 let answerElement1 = document.querySelector('#answer1');
@@ -50,9 +53,23 @@ const quizQuestions = [
     },
 ]
 
+
+
+quizStartBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    quizStartContainer.style.display = 'none';
+    quiztContainer.style.display = 'block';
+    questionHeading.innerHTML = quizQuestions[questionIndex].question;
+    answerElement1.innerHTML = quizQuestions[questionIndex].choice1;
+    answerElement2.innerHTML = quizQuestions[questionIndex].choice2;
+    answerElement3.innerHTML = quizQuestions[questionIndex].choice3;
+    answerElement4.innerHTML = quizQuestions[questionIndex].choice4;
+})
+
 let questionIndex = 0;
 
 nextBtn.addEventListener('click', function (e) {
+    console.log(e.target);
     if (questionIndex < quizQuestions.length - 1) {
         questionIndex++;
         questionHeading.innerHTML = quizQuestions[questionIndex].question;
@@ -63,9 +80,5 @@ nextBtn.addEventListener('click', function (e) {
     }
 })
 
-questionHeading.innerHTML = quizQuestions[questionIndex].question;
-answerElement1.innerHTML = quizQuestions[questionIndex].choice1;
-answerElement2.innerHTML = quizQuestions[questionIndex].choice2;
-answerElement3.innerHTML = quizQuestions[questionIndex].choice3;
-answerElement4.innerHTML = quizQuestions[questionIndex].choice4;
+
 

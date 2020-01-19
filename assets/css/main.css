@@ -27,7 +27,18 @@ h1 {
 	text-transform: uppercase;
 }
 
+.quiz-start {
+	max-width: 600px;
+	text-align: center;
+	padding: 40px;
+	margin: 10% auto;
+	background-color: #fcfcfd;
+	border-radius: 10px;
+	box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.4);
+}
+
 .quiz-container {
+	display: none;
 	max-width: 600px;
 	padding: 40px;
 	margin: 10% auto;
