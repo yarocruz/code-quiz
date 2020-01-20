@@ -4,6 +4,11 @@ let quizStartBtn = document.querySelector('.quiz-start-btn');
 let quizStartContainer = document.querySelector('.quiz-start');
 let quiztContainer = document.querySelector('.quiz-container');
 let feedBack = document.querySelector('.feedback');
+let timerContainer = document.querySelector('.quiz-timer');
+let timer = document.querySelector('.timer');
+let progressBar = document.querySelector('.progress-bar');
+let quizScoreContainer = document.querySelector('.quiz-score-container');
+let quizScore = document.querySelector('.quiz-score');
 
 // Answer choices Elements
 let answerElement1 = document.querySelector('#answer1');
@@ -55,6 +60,24 @@ const quizQuestions = [
 ]
 
 let questionIndex = 0;
+let timeLeft = 60;
+let width = 500;
+let TIMER;
+let score = 0;
+
+function startTimer() {
+    TIMER = setInterval(() => {
+        timeLeft--;
+        timer.textContent = timeLeft;
+        progressBar.style.width = (timeLeft * 1017 / 100) + 'px';
+        if (timeLeft <= 0) {
+            clearInterval(TIMER);
+            console.log('Times up!');
+            let initials = prompt('Enter your initials');
+            console.log(initials);
+        }
+    }, 1000)
+}
 
 questionHeading.textContent = quizQuestions[questionIndex].question;
 answerElement1.textContent = quizQuestions[questionIndex].choice1;
@@ -77,18 +100,22 @@ nextBtn.addEventListener('click', function () {
 })
 
 function startQuiz() {
+    startTimer();
     disableCheckboxes();
     checkAnswers();
     quizStartContainer.style.display = 'none';
     quiztContainer.style.display = 'block';
-
+    timerContainer.style.display = 'block';
+    quizScoreContainer.style.display = 'block';
 }
 
 function resetQuestions() {
     for (let checkbox of checkBoxes) {
         checkbox.checked = false;
         checkbox.disabled = false;
+        checkbox.nextSibling.style.opacity = '1';
     }
+    feedBack.textContent = '';
 }
 
 let checkBoxes = document.querySelectorAll('input[type=checkbox]');
@@ -101,8 +128,10 @@ function disableCheckboxes() {
                     console.log(unchecked);
                     if (!unchecked.checked) {
                         unchecked.disabled = true;
+                        unchecked.nextSibling.style.opacity = '0.5';
                     }
                     checkbox.disabled = true;
+
                 }
             }
         })
@@ -116,22 +145,16 @@ function checkAnswers() {
             console.log(quizQuestions[questionIndex].correctAnswer);
             if (e.target.nextSibling.dataset.value === quizQuestions[questionIndex].correctAnswer) {
                 console.log('That is correct');
+                score++;
+                quizScore.textContent = `Your current score is ${score}.`
+                feedBack.textContent = 'That is correct';
+                feedBack.style.backgroundColor = 'blue';
             } else {
                 console.log('Answer is wrong');
+                feedBack.style.backgroundColor = 'red';
+                feedBack.textContent = 'Wrong!';
+                timeLeft -= 10;
             }
-
         })
     }
 }
-
-//console.log(checkBoxes[0].nextSibling.textContent);
-
-
-
-
-
-
-
-
-
-

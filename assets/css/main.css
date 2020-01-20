@@ -41,10 +41,35 @@ h1 {
 	display: none;
 	max-width: 600px;
 	padding: 40px;
-	margin: 10% auto;
+	margin: 20px auto;
 	background-color: #fcfcfd;
 	border-radius: 10px;
 	box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.4);
+}
+
+.quiz-timer,
+.quiz-score-container {
+	display: none;
+	max-width: 600px;
+	font-size: 2em;
+	height: 40px;
+	padding: 40px;
+	margin: 10px auto;
+	text-align: center;
+	background-color: #fcfcfd;
+	border-radius: 10px;
+	box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.4);
+}
+
+.progress-bar {
+	margin: 20px 0;
+	height: 10px;
+	background-color: #ff5161;
+	border-radius: 10px;
+}
+
+.quiz-instructions {
+	margin-bottom: 20px;
 }
 
 .quiz-question {
@@ -53,6 +78,10 @@ h1 {
 
 .answers {
 	padding-left: 15px;
+}
+
+.feedback {
+	margin-top: 20px;
 }
 
 .selected,
