@@ -53,10 +53,8 @@ const quizQuestions = [
     },
 ]
 
-
-
 quizStartBtn.addEventListener('click', function (e) {
-    e.stopPropagation();
+    disableCheckboxes();
     quizStartContainer.style.display = 'none';
     quiztContainer.style.display = 'block';
     questionHeading.innerHTML = quizQuestions[questionIndex].question;
@@ -69,7 +67,6 @@ quizStartBtn.addEventListener('click', function (e) {
 let questionIndex = 0;
 
 nextBtn.addEventListener('click', function (e) {
-    console.log(e.target);
     if (questionIndex < quizQuestions.length - 1) {
         questionIndex++;
         questionHeading.innerHTML = quizQuestions[questionIndex].question;
@@ -79,6 +76,31 @@ nextBtn.addEventListener('click', function (e) {
         answerElement4.innerHTML = quizQuestions[questionIndex].choice4;
     }
 })
+
+let checkBoxes = document.querySelectorAll('input[type=checkbox]');
+
+
+function disableCheckboxes() {
+    for (let checkbox of checkBoxes) {
+        checkbox.addEventListener('click', (e) => {
+            if (e.target.checked) {
+                for (let unchecked of checkBoxes) {
+                    console.log(unchecked);
+                    if (!unchecked.checked) {
+                        unchecked.disabled = true;
+                    }
+                    checkbox.disabled = true;
+                }
+            }
+        })
+    }
+}
+
+
+
+
+
+
 
 
 
