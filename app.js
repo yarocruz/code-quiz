@@ -9,6 +9,7 @@ let timer = document.querySelector('.timer');
 let progressBar = document.querySelector('.progress-bar');
 let quizScoreContainer = document.querySelector('.quiz-score-container');
 let quizScore = document.querySelector('.quiz-score');
+let checkBoxes = document.querySelectorAll('input[type=checkbox]');
 
 // Answer choices Elements
 let answerElement1 = document.querySelector('#answer1');
@@ -87,11 +88,14 @@ answerElement4.textContent = quizQuestions[questionIndex].choice4;
 
 quizStartBtn.addEventListener('click', startQuiz)
 
-nextBtn.addEventListener('click', function () {
-    if (questionIndex < quizQuestions.length - 1) {
-        questionIndex++;
-        resetQuestions();
+nextBtn.addEventListener('click', function (e) {
+    for (checkbox of checkBoxes) {
+        if (questionIndex < quizQuestions.length - 1 && checkbox.checked) {
+            questionIndex++;
+            resetQuestions();
+        }
     }
+
     questionHeading.textContent = quizQuestions[questionIndex].question;
     answerElement1.textContent = quizQuestions[questionIndex].choice1;
     answerElement2.textContent = quizQuestions[questionIndex].choice2;
@@ -117,8 +121,6 @@ function resetQuestions() {
     }
     feedBack.textContent = '';
 }
-
-let checkBoxes = document.querySelectorAll('input[type=checkbox]');
 
 function disableCheckboxes() {
     for (let checkbox of checkBoxes) {
