@@ -67,6 +67,10 @@ let TIMER;
 let score = 0;
 let initials;
 
+// Setting up the data that will get saved to local storage
+let records = [];
+let user = {};
+
 function startTimer() {
     TIMER = setInterval(() => {
         timeLeft--;
@@ -86,9 +90,29 @@ function startTimer() {
 function stopTimer() {
     clearInterval(TIMER);
     console.log('Times up!');
-    initials = prompt('Quiz complete! Enter your initials to save your score.');
     setScore();
-    console.log(initials);
+}
+
+function setScore() {
+    initials = prompt('Quiz complete! Enter your initials to save your score.');
+    user.name = initials;
+    user.finalScore = score;
+    records.push(user);
+    console.log(records);
+    if (records) {
+        localStorage.setItem('records', JSON.stringify(records));
+    }
+
+}
+
+function getScores() {
+    let recordCollection = JSON.parse(localStorage.getItem('records'));
+    console.log(recordCollection);
+    if (recordCollection) {
+        for (let record of recordCollection) {
+            records.push(record);
+        }
+    }
 }
 
 questionHeading.textContent = quizQuestions[questionIndex].question;
@@ -140,7 +164,6 @@ function disableCheckboxes() {
         checkbox.addEventListener('click', (e) => {
             if (e.target.checked) {
                 for (let unchecked of checkBoxes) {
-                    console.log(unchecked);
                     if (!unchecked.checked) {
                         unchecked.disabled = true;
                         unchecked.nextSibling.style.opacity = '0.5';
@@ -155,10 +178,7 @@ function disableCheckboxes() {
 function checkAnswers() {
     for (i = 0; i < checkBoxes.length; i++) {
         checkBoxes[i].addEventListener('click', (e) => {
-            console.log(e.target.nextSibling.dataset.value);
-            console.log(quizQuestions[questionIndex].correctAnswer);
             if (e.target.nextSibling.dataset.value === quizQuestions[questionIndex].correctAnswer) {
-                console.log('That is correct');
                 score++;
                 quizScore.textContent = `Your current score is ${score}.`
                 feedBack.textContent = 'That is correct';
@@ -171,15 +191,4 @@ function checkAnswers() {
             }
         })
     }
-}
-
-function setScore() {
-    localStorage.setItem('score', score);
-    localStorage.setItem('name', initials);
-}
-
-function getScores() {
-    let latestScore = localStorage.getItem('score')
-    let quizTaker = localStorage.getItem('name')
-    quizScore.textContent = `The latest score is ${latestScore} by ${quizTaker}`;
 }
