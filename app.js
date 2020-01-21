@@ -102,7 +102,6 @@ function setScore() {
     if (records) {
         localStorage.setItem('records', JSON.stringify(records));
     }
-
 }
 
 function getScores() {
