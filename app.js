@@ -65,6 +65,7 @@ let timeLeft = 60;
 let width = 500;
 let TIMER;
 let score = 0;
+let initials;
 
 function startTimer() {
     TIMER = setInterval(() => {
@@ -72,12 +73,22 @@ function startTimer() {
         timer.textContent = timeLeft;
         progressBar.style.width = (timeLeft * 1017 / 100) + 'px';
         if (timeLeft <= 0) {
-            clearInterval(TIMER);
-            console.log('Times up!');
-            let initials = prompt('Enter your initials');
-            console.log(initials);
+            stopTimer();
+        }
+        for (checkbox of checkBoxes) {
+            if (questionIndex >= quizQuestions.length - 1 && checkbox.checked === true) {
+                stopTimer();
+            }
         }
     }, 1000)
+}
+
+function stopTimer() {
+    clearInterval(TIMER);
+    console.log('Times up!');
+    initials = prompt('Quiz complete! Enter your initials to save your score.');
+    setScore();
+    console.log(initials);
 }
 
 questionHeading.textContent = quizQuestions[questionIndex].question;
@@ -87,8 +98,9 @@ answerElement3.textContent = quizQuestions[questionIndex].choice3;
 answerElement4.textContent = quizQuestions[questionIndex].choice4;
 
 quizStartBtn.addEventListener('click', startQuiz)
+nextBtn.addEventListener('click', getNextQuestion);
 
-nextBtn.addEventListener('click', function (e) {
+function getNextQuestion() {
     for (checkbox of checkBoxes) {
         if (questionIndex < quizQuestions.length - 1 && checkbox.checked) {
             questionIndex++;
@@ -101,12 +113,13 @@ nextBtn.addEventListener('click', function (e) {
     answerElement2.textContent = quizQuestions[questionIndex].choice2;
     answerElement3.textContent = quizQuestions[questionIndex].choice3;
     answerElement4.textContent = quizQuestions[questionIndex].choice4;
-})
+}
 
 function startQuiz() {
     startTimer();
     disableCheckboxes();
     checkAnswers();
+    getScores();
     quizStartContainer.style.display = 'none';
     quiztContainer.style.display = 'block';
     timerContainer.style.display = 'block';
@@ -133,7 +146,6 @@ function disableCheckboxes() {
                         unchecked.nextSibling.style.opacity = '0.5';
                     }
                     checkbox.disabled = true;
-
                 }
             }
         })
@@ -159,4 +171,15 @@ function checkAnswers() {
             }
         })
     }
+}
+
+function setScore() {
+    localStorage.setItem('score', score);
+    localStorage.setItem('name', initials);
+}
+
+function getScores() {
+    let latestScore = localStorage.getItem('score')
+    let quizTaker = localStorage.getItem('name')
+    quizScore.textContent = `The latest score is ${latestScore} by ${quizTaker}`;
 }
