@@ -1,6 +1,6 @@
 # Code Quiz / [Demo](https://yarocruz.github.io/code-quiz/) 
 
-![screenshot](assets/img/04-web-apis-homework-demo.gif)
+![screenshot](assets/img/quiz-screenshot.png)
 
 ## Description
 
