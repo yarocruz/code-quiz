@@ -166,3 +166,15 @@ input:checked::before {
 .btn:hover {
 	color: #fcfcfd;
 }
+
+.correct {
+	padding: 15px;
+	color: #fcfcfd;
+	background-color: #1abc9c;
+}
+
+.wrong {
+	padding: 15px;
+	color: #fcfcfd;
+	background-color: #ff5161;
+}

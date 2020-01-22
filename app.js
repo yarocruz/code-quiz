@@ -165,6 +165,7 @@ function resetQuestions() {
         checkbox.nextSibling.style.opacity = '1';
     }
     feedBack.textContent = '';
+    feedBack.classList.remove('correct', 'wrong');
 }
 
 function disableCheckboxes() {
@@ -188,11 +189,11 @@ function checkAnswers() {
         checkBoxes[i].addEventListener('click', (e) => {
             if (e.target.nextSibling.dataset.value === quizQuestions[questionIndex].correctAnswer) {
                 score++;
-                feedBack.textContent = 'That is correct';
-                feedBack.style.backgroundColor = 'blue';
+                feedBack.textContent = 'That is correct!';
+                feedBack.classList.add('correct');
             } else {
                 console.log('Answer is wrong');
-                feedBack.style.backgroundColor = 'red';
+                feedBack.classList.add('wrong');
                 feedBack.textContent = 'Wrong!';
                 timeLeft -= 10;
             }
