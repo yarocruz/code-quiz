@@ -29,13 +29,26 @@ h1 {
 }
 
 .main-container {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.scores-link,
+.scores-container {
+	width: 600px;
+	margin: 20px auto;
+	padding: 40px;
+	text-align: center;
+	background-color: #fcfcfd;
+	border-radius: 10px;
+	box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.4);
 }
 
 .quiz-start {
 	max-width: 600px;
 	text-align: center;
 	padding: 40px;
-	margin: 10% auto;
+	margin: 20px auto;
 	background-color: #fcfcfd;
 	border-radius: 10px;
 	box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.4);

@@ -11,7 +11,8 @@ let quizScoreContainer = document.querySelector('.quiz-score-container');
 let quizScore = document.querySelector('.quiz-score');
 let checkBoxes = document.querySelectorAll('input[type=checkbox]');
 let restartQuizBtn = document.querySelector('.restart-btn');
-let scoresContainer = document.querySelector('.scores-container');
+let scoresContainer = document.querySelector('.scores-list')
+let scoresLinkContainer = document.querySelector('.scores-link');
 
 // Answer choices Elements
 let answerElement1 = document.querySelector('#answer1');
@@ -117,14 +118,6 @@ function getScores() {
     }
 }
 
-function displayScores() {
-    for (let record of records) {
-        let paragraph = document.createElement('p');
-        paragraph.textContent = `${record.name} - ${record.finalScore}`;
-        scoresContainer.appendChild(paragraph);
-    }
-}
-
 questionHeading.textContent = quizQuestions[questionIndex].question;
 answerElement1.textContent = quizQuestions[questionIndex].choice1;
 answerElement2.textContent = quizQuestions[questionIndex].choice2;
@@ -155,7 +148,7 @@ function startQuiz() {
     disableCheckboxes();
     checkAnswers();
     getScores();
-    displayScores();
+    scoresLinkContainer.style.display = 'none';
     quizStartContainer.style.display = 'none';
     quiztContainer.style.display = 'block';
     timerContainer.style.display = 'block';

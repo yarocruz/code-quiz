@@ -5,29 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Code Quiz</title>
+    <title>Code Quiz - Scores</title>
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
-
     <div class="main-container">
-
-        <div class="scores-link">
-            <a href="scores.html">See latest scores</a>
-        </div>
-
-        <div class="quiz-start">
-            <p class="quiz-instructions">
-                This is a code quiz that will test your knowledge about web development.
-            </p>
-            <button class="btn quiz-start-btn">Start Quiz</button>
-        </div>
-
-        <div class="quiz-timer">
-            <p class="timer"></p>
-            <p class="progress-bar"></p>
+        <div class="scores-container">
+            <h1>Latest Scores</h1>
+            <ul class="scores-list"></ul>
         </div>
 
         <div class="quiz-container">
@@ -61,14 +48,26 @@
             <p class="feedback"></p>
         </div>
 
-        <div class="quiz-score-container">
-            <p class="quiz-score"></p>
-            <button class="btn restart-btn">Retake Quiz</button>
-        </div>
+        <button class="btn quiz-start-btn" style="display: none;">Start Quiz</button>
+        <button class="btn restart-btn" style="display: none;">Retake Quiz</button>
 
     </div>
 
     <script src="app.js"></script>
+    <script>
+        function displayScores() {
+            getScores();
+            for (let record of records) {
+
+                let li = document.createElement('li');
+                li.textContent = `${record.name} - ${record.finalScore} out 5`;
+                scoresContainer.appendChild(li);
+            }
+        }
+
+        displayScores();
+    </script>
+
 </body>
 
 </html>
