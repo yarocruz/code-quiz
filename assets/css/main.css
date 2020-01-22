@@ -64,7 +64,11 @@ h1 {
 	box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.4);
 }
 
-.quiz-timer,
+.timer {
+	height: 2px;
+	padding-bottom: 5px;
+}
+
 .quiz-score-container {
 	display: none;
 	max-width: 600px;
@@ -83,8 +87,16 @@ h1 {
 
 .progress-bar {
 	margin: 20px 0;
-	height: 10px;
+	height: 8px;
 	background-color: #ff5161;
+	border-radius: 10px;
+	position: relative;
+}
+
+.progress-bar-wrap {
+	margin: 20px 0;
+	height: 9px;
+	background-color: #d4d3d3;
 	border-radius: 10px;
 }
 
