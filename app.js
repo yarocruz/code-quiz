@@ -10,6 +10,8 @@ let progressBar = document.querySelector('.progress-bar');
 let quizScoreContainer = document.querySelector('.quiz-score-container');
 let quizScore = document.querySelector('.quiz-score');
 let checkBoxes = document.querySelectorAll('input[type=checkbox]');
+let restartQuizBtn = document.querySelector('.restart-btn');
+let scoresContainer = document.querySelector('.scores-container');
 
 // Answer choices Elements
 let answerElement1 = document.querySelector('#answer1');
@@ -74,7 +76,7 @@ let user = {};
 function startTimer() {
     TIMER = setInterval(() => {
         timeLeft--;
-        timer.textContent = timeLeft;
+        timer.textContent = `You have ${timeLeft} seconds left.`;
         progressBar.style.width = (timeLeft * 1017 / 100) + 'px';
         if (timeLeft <= 0) {
             stopTimer();
@@ -91,6 +93,8 @@ function stopTimer() {
     clearInterval(TIMER);
     console.log('Times up!');
     setScore();
+    quizScoreContainer.style.display = 'block';
+    quizScore.textContent = `You had ${score} of 5 correct.`
 }
 
 function setScore() {
@@ -106,11 +110,18 @@ function setScore() {
 
 function getScores() {
     let recordCollection = JSON.parse(localStorage.getItem('records'));
-    console.log(recordCollection);
     if (recordCollection) {
         for (let record of recordCollection) {
             records.push(record);
         }
+    }
+}
+
+function displayScores() {
+    for (let record of records) {
+        let paragraph = document.createElement('p');
+        paragraph.textContent = `${record.name} - ${record.finalScore}`;
+        scoresContainer.appendChild(paragraph);
     }
 }
 
@@ -122,6 +133,7 @@ answerElement4.textContent = quizQuestions[questionIndex].choice4;
 
 quizStartBtn.addEventListener('click', startQuiz)
 nextBtn.addEventListener('click', getNextQuestion);
+restartQuizBtn.addEventListener('click', reStartQuiz);
 
 function getNextQuestion() {
     for (checkbox of checkBoxes) {
@@ -143,10 +155,14 @@ function startQuiz() {
     disableCheckboxes();
     checkAnswers();
     getScores();
+    displayScores();
     quizStartContainer.style.display = 'none';
     quiztContainer.style.display = 'block';
     timerContainer.style.display = 'block';
-    quizScoreContainer.style.display = 'block';
+}
+
+function reStartQuiz() {
+    document.location.reload();
 }
 
 function resetQuestions() {
@@ -179,7 +195,6 @@ function checkAnswers() {
         checkBoxes[i].addEventListener('click', (e) => {
             if (e.target.nextSibling.dataset.value === quizQuestions[questionIndex].correctAnswer) {
                 score++;
-                quizScore.textContent = `Your current score is ${score}.`
                 feedBack.textContent = 'That is correct';
                 feedBack.style.backgroundColor = 'blue';
             } else {

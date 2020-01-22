@@ -11,51 +11,63 @@
 </head>
 
 <body>
-    <div class="quiz-start">
-        <p class="quiz-instructions">
-            This is a code quiz that will test your knowledge about web development.
-        </p>
-        <button class="btn quiz-start-btn">Start Quiz</button>
-    </div>
-    <div class="quiz-timer">
-        <p class="timer">60</p>
-        <p class="progress-bar"></p>
-    </div>
-    <div class="quiz-container">
-        <h1>Code Quiz</h1>
-        <h2 class="quiz-question">Demo Question</h2>
-        <ul>
-            <li>
-                <label class="checkbox">
-                    <input type="checkbox"><span id="answer1" class="answers" data-value="1">demo answers</span>
-                </label>
-            </li>
-            <li>
-                <label class="checkbox">
-                    <input type="checkbox"><span id="answer2" class="answers" data-value="2">demo answers</span>
-                </label>
-            </li>
-            <li>
-                <label class="checkbox">
-                    <input type="checkbox"><span id="answer3" class="answers" data-value="3">demo answers</span>
-                </label>
-            </li>
-            <li>
-                <label class="checkbox">
-                    <input type="checkbox"><span id="answer4" class="answers" data-value="4">demo answers</span>
-                </label>
-            </li>
-        </ul>
 
-        <button class="btn next-question">Next Question</button>
-        <!-- <button class="btn prev-question"></button> -->
 
-        <p class="feedback"></p>
+
+    <div class="main-container">
+        <div class="scores-container"></div>
+
+        <div class="quiz-start">
+            <p class="quiz-instructions">
+                This is a code quiz that will test your knowledge about web development.
+            </p>
+            <button class="btn quiz-start-btn">Start Quiz</button>
+        </div>
+
+        <div class="quiz-timer">
+            <p class="timer"></p>
+            <p class="progress-bar"></p>
+        </div>
+
+        <div class="quiz-container">
+            <h1>Code Quiz</h1>
+            <h2 class="quiz-question">Demo Question</h2>
+            <ul>
+                <li>
+                    <label class="checkbox">
+                        <input type="checkbox"><span id="answer1" class="answers" data-value="1">demo answers</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="checkbox">
+                        <input type="checkbox"><span id="answer2" class="answers" data-value="2">demo answers</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="checkbox">
+                        <input type="checkbox"><span id="answer3" class="answers" data-value="3">demo answers</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="checkbox">
+                        <input type="checkbox"><span id="answer4" class="answers" data-value="4">demo answers</span>
+                    </label>
+                </li>
+            </ul>
+
+            <button class="btn next-question">Next Question</button>
+
+            <p class="feedback"></p>
+        </div>
+
+        <div class="quiz-score-container">
+            <p class="quiz-score"></p>
+            <button class="btn restart-btn">Retake Quiz</button>
+        </div>
+
     </div>
 
-    <div class="quiz-score-container">
-        <p class="quiz-score">60</p>
-    </div>
+
 
 
     <script src="app.js"></script>

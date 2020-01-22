@@ -8,7 +8,8 @@ body {
 h1,
 h2,
 ul,
-li {
+li,
+p {
 	margin-bottom: 15px;
 }
 
@@ -25,6 +26,9 @@ li {
 h1 {
 	font-size: 1.4em;
 	text-transform: uppercase;
+}
+
+.main-container {
 }
 
 .quiz-start {
@@ -51,14 +55,17 @@ h1 {
 .quiz-score-container {
 	display: none;
 	max-width: 600px;
-	font-size: 2em;
-	height: 40px;
+	font-size: 1em;
 	padding: 40px;
 	margin: 10px auto;
-	text-align: center;
+	text-align: left;
 	background-color: #fcfcfd;
 	border-radius: 10px;
 	box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.4);
+}
+
+.quiz-score-container {
+	text-align: center;
 }
 
 .progress-bar {
@@ -125,6 +132,7 @@ input:checked::before {
 	outline: none;
 	border: none;
 	font-size: .89em;
+	margin: 10px;
 	padding: 10px 15px;
 	border-radius: 3px;
 	background-color: #1d355c;
