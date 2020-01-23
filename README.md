@@ -1,6 +1,6 @@
 # Code Quiz / [Demo](https://yarocruz.github.io/code-quiz/) 
 
-![screenshot](assets/img/quiz-screenshot.png)
+![screenshot](assets/img/code-quiz-screenshot.png)
 
 ## Description
 
