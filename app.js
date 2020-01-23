@@ -104,7 +104,7 @@ function setScore() {
     user.finalScore = score;
     records.push(user);
     console.log(records);
-    if (records) {
+    if (records && initials) {
         localStorage.setItem('records', JSON.stringify(records));
     }
 }
