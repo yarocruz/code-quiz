@@ -124,8 +124,9 @@ answerElement2.textContent = quizQuestions[questionIndex].choice2;
 answerElement3.textContent = quizQuestions[questionIndex].choice3;
 answerElement4.textContent = quizQuestions[questionIndex].choice4;
 
-quizStartBtn.addEventListener('click', startQuiz)
-nextBtn.addEventListener('click', getNextQuestion);
+
+// Event Listeners
+quizStartBtn.addEventListener('click', startQuiz);
 restartQuizBtn.addEventListener('click', reStartQuiz);
 
 function getNextQuestion() {
@@ -197,6 +198,9 @@ function checkAnswers() {
                 feedBack.textContent = 'Wrong!';
                 timeLeft -= 10;
             }
+            setTimeout(function () {
+                getNextQuestion();
+            }, 1000);
         })
     }
-}
+} 
