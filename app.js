@@ -78,7 +78,7 @@ function startTimer() {
     TIMER = setInterval(() => {
         timeLeft--;
         timer.textContent = `You have ${timeLeft} seconds left.`;
-        progressBar.style.width = (timeLeft * 1017 / 100) + 'px';
+        progressBar.style.maxWidth = (timeLeft * 1017 / 100) + 'px';
         if (timeLeft <= 0) {
             stopTimer();
         }

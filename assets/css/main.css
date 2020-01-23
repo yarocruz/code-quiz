@@ -35,7 +35,7 @@ h1 {
 
 .scores-link,
 .scores-container {
-	width: 600px;
+	max-width: 600px;
 	margin: 20px auto;
 	padding: 40px;
 	text-align: center;
@@ -105,6 +105,7 @@ h1 {
 }
 
 .quiz-question {
+	font-weight: 600;
 	font-size: 1.2em;
 }
 
@@ -130,7 +131,7 @@ input {
 	-o-appearance: none;
 	appearance: none;
 	border: 1px solid #9fa1a5;
-	border-radius: 100px;
+	border-radius: 50%;
 	outline: none;
 	transition-duration: 0.3s;
 	cursor: pointer;
