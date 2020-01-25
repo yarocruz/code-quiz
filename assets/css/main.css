@@ -13,6 +13,10 @@ p {
 	margin-bottom: 15px;
 }
 
+a {
+	text-decoration: none;
+}
+
 label {
 	display: flex;
 	align-items: center;
@@ -44,7 +48,8 @@ h1 {
 	box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.4);
 }
 
-.quiz-start {
+.quiz-start,
+.back-to-quiz-container {
 	max-width: 600px;
 	text-align: center;
 	padding: 40px;
