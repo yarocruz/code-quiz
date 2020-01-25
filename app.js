@@ -22,7 +22,7 @@ let answerElement4 = document.querySelector('#answer4');
 
 const quizQuestions = [
     {
-        question: "1. What is the difference between a block level element and an inline level element?",
+        question: "What is the difference between a block level element and an inline level element?",
         choice1: "Blocks are big legos. Inline elements are skates",
         choice2: "Blocks fill the whole width they are contained in. Inline element don't.",
         choice3: "Blocks are box model elements. Inline are flexboxes.",
@@ -30,7 +30,7 @@ const quizQuestions = [
         correctAnswer: "2"
     },
     {
-        question: "2. What does Array.flat do?",
+        question: "What does Array.flat do?",
         choice1: "It makes an array that has arrays into one array.",
         choice2: "It makes fat objects into skinny arrays.",
         choice3: "It deletes all the items in an array.",
@@ -38,7 +38,7 @@ const quizQuestions = [
         correctAnswer: "1"
     },
     {
-        question: "3. A CSS example of a pseudo selector is...",
+        question: "A CSS example of a pseudo selector is...",
         choice1: ":click",
         choice2: ":change",
         choice3: ":hover",
@@ -46,7 +46,7 @@ const quizQuestions = [
         correctAnswer: "3"
     },
     {
-        question: "4. An example of an HTML element that's self closing",
+        question: "An example of an HTML element that's self closing",
         choice1: "The <img> tag",
         choice2: "The <br> tag",
         choice3: "The <link> tag",
@@ -54,7 +54,7 @@ const quizQuestions = [
         correctAnswer: "4"
     },
     {
-        question: "5. CSS is short for...",
+        question: "CSS is short for...",
         choice1: "Cascading Style Sheeps",
         choice2: "Cascading Style Sheets",
         choice3: "Centered System Signs",
@@ -117,6 +117,14 @@ function getScores() {
         }
     }
 }
+
+function shuffleQuestions() {
+    quizQuestions.sort(function () {
+        return 0.5 - Math.random();
+    })
+}
+
+shuffleQuestions();
 
 questionHeading.textContent = quizQuestions[questionIndex].question;
 answerElement1.textContent = quizQuestions[questionIndex].choice1;
