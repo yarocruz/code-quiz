@@ -39,4 +39,12 @@ const quizQuestions = [
         choice4: "Cats Sing Songs",
         correctAnswer: "2"
     },
+    {
+        question: "What does the <ul> tag stand for",
+        choice1: "Unique list",
+        choice2: "Ultimate tag",
+        choice3: "Unordered list",
+        choice4: "Upper Lock",
+        correctAnswer: "3"
+    },
 ]

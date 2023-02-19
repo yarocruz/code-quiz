@@ -52,7 +52,7 @@ function stopTimer() {
     console.log('Times up!');
     setScore();
     quizScoreContainer.style.display = 'block';
-    quizScore.textContent = `You had ${score} of 5 correct.`
+    quizScore.textContent = `You had ${score} of ${quizQuestions.length} correct.`
 }
 
 function setScore() {
@@ -93,6 +93,7 @@ answerElement4.textContent = quizQuestions[questionIndex].choice4;
 // Event Listeners
 quizStartBtn.addEventListener('click', startQuiz);
 restartQuizBtn.addEventListener('click', reStartQuiz);
+
 
 function getNextQuestion() {
     for (let checkbox of checkBoxes) {
